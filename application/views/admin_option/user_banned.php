@@ -27,7 +27,7 @@ echo "<br><br>";
 			echo "<th><center>ชื่อ</center></th>";
 			echo "<th><center>นามสกุล</center></th>";
 			echo "<th><center>เพศ</center></th>";
-			echo "<th width='110'><center>สถานะการใช้งาน</center></th>";
+			echo "<th width='110'><center>คืนสถานะ</center></th>";
 			echo "<th width='70'><center>แก้ไขผู้ใช้</center></th>";
 
 		echo "</tr>";

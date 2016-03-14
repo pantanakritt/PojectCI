@@ -13,10 +13,10 @@ $(document).ready(function(){
 
 		//----------------------------------- Search class ----------------------
 
-		$(".search_from_day").click(function(event){
+		$(document).on("click", ".search_by_day", function(events){
 			event.preventDefault();
-			var dayID = $(this).children(".dayID").val();
-			function_search_class("from_day",dayID);
+			var dayID = $(this).children(".DayID").val();
+			function_search_class(dayID);
 		});
 		
 		$(".search_from_room").click(function(event){
@@ -37,9 +37,9 @@ $(document).ready(function(){
 			function_search_class("from_group",groupID);
 		});
 
-		var function_search_class = function(type,data_send){
-			var data = {"data_send" : data_send,"type_view" : type};
-			ajax_common(data,"function/AjaxUpdate.php","POST",$(".updates"));
+		var function_search_class = function(data_send){
+			var data = {"data" : data_send};
+			ajax_common(data,"./index.php/Welcome/select_day","POST",$(".updates"));
 		};
 		
 		//--------------------------- Log Out -------------------------------

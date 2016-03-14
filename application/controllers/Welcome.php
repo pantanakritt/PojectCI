@@ -11,6 +11,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('select_by','select_by');
 		$this->load->model('show_table_menu','md_call');
 		$this->load->model('log','logfile');
+		//$this->load->model('select_by','select_md');
 
 		//$this->load->helper('gadget');
 
@@ -41,14 +42,14 @@ class Welcome extends CI_Controller {
 		$query1['group'] = $this->md_call->_callGroup();
 		$query1['teacher'] = $this->md_call->_callTeach();
 
-		$q_select['select_day'] = $this->select_by->_selectByday();
+		//$q_select['select_day'] = $this->select_by->_selectByday();
 
 		$dt_send = array(
 			'day' => $query1['day']									, 
 			'room' => $query1['room'] 								,
 			'group' => $query1['group']								,
-			'teacher' => $query1['teacher']							,
-			'select_day' => $q_select['select_day']					,
+			'teacher' => $query1['teacher']							
+			//'select_day' => $q_select['select_day']					,
 
 			
 			);
@@ -113,6 +114,20 @@ class Welcome extends CI_Controller {
 		$this->load->view('myerror',$error);
 	}
 
+	public function select_day(){
+	$query_day = $this->select_by->_selectByday($this->input->post('data'));
+	print_r($query_day);
+
+	echo "<br>".count($query_day);
+
+	foreach ($query_day as $dt) {
+		echo "<br>";
+		echo $dt['AsgnRef']."-----".$dt['CourseID']."-----".$dt['Room']."-----".$dt['MajorName']."-----".$dt['Day']."-----".$dt['StartTime']."-----".$dt['Theory']."-----".$dt['Practical']."-----".$dt['CourseName'];
+		echo "<br>";
+
+		$this->load->view('select_by_day', $query_day);
+	}
+	}
 
 
 
